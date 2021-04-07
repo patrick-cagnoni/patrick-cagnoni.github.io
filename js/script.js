@@ -98,82 +98,82 @@ $(function(){
 	/*=========================================================================
 		Contact Form
 	=========================================================================*/
-	function isJSON(val){
-		var str = val.replace(/\\./g, '@').replace(/"[^"\\\n\r]*"/g, '');
-		return (/^[,:{}\[\]0-9.\-+Eaeflnr-u \n\r\t]*$/).test(str);
-	}
-	$('#contact-form').validator().on('submit', function (e) {
+	// function isJSON(val){
+	// 	var str = val.replace(/\\./g, '@').replace(/"[^"\\\n\r]*"/g, '');
+	// 	return (/^[,:{}\[\]0-9.\-+Eaeflnr-u \n\r\t]*$/).test(str);
+	// }
+	// $('#contact-form').validator().on('submit', function (e) {
 		
-		if (!e.isDefaultPrevented()) {
-			// If there is no any error in validation then send the message
+	// 	if (!e.isDefaultPrevented()) {
+	// 		// If there is no any error in validation then send the message
 			
-			e.preventDefault();
-			var $this = $(this),
+	// 		e.preventDefault();
+	// 		var $this = $(this),
 				
-				//You can edit alerts here
-				alerts = {
+	// 			//You can edit alerts here
+	// 			alerts = {
 				
-					success: 
-					"<div class='form-group' >\
-						<div class='alert alert-success' role='alert'> \
-							<strong>Message Enviado!</strong> \
-						</div>\
-					</div>",
+	// 				success: 
+	// 				"<div class='form-group' >\
+	// 					<div class='alert alert-success' role='alert'> \
+	// 						<strong>Message Enviado!</strong> \
+	// 					</div>\
+	// 				</div>",
 					
 					
-					error: 
-					"<div class='form-group' >\
-						<div class='alert alert-danger' role='alert'> \
-							<strong>Oops!</strong> Desculpe, occorreu um erro, tente novamente\
-						</div>\
-					</div>"
+	// 				error: 
+	// 				"<div class='form-group' >\
+	// 					<div class='alert alert-danger' role='alert'> \
+	// 						<strong>Oops!</strong> Desculpe, occorreu um erro, tente novamente\
+	// 					</div>\
+	// 				</div>"
 					
-				};
+	// 			};
 			
-			$.ajax({
+	// 		$.ajax({
 			
-				url: 'https://formspree.io/f/xqkwkdqg',
-				type: 'POST',
-				data: $this.serialize(),
-				success: function(data){
+	// 			url: 'https://formspree.io/f/xqkwkdqg',
+	// 			type: 'POST',
+	// 			data: $this.serialize(),
+	// 			success: function(data){
 					
-					if( isJSON(data) ){
+	// 				if( isJSON(data) ){
 						
-						data = $.parseJSON(data);
+	// 					data = $.parseJSON(data);
 						
-						if(data['error'] == false){
+	// 					if(data['error'] == false){
 							
-							$('#contact-form-result').html(alerts.success);
+	// 						$('#contact-form-result').html(alerts.success);
 							
-							$('#contact-form').trigger('reset');
+	// 						$('#contact-form').trigger('reset');
 							
-						}else{
+	// 					}else{
 							
-							$('#contact-form-result').html(
-							"<div class='form-group' >\
-								<div class='alert alert-danger alert-dismissible' role='alert'> \
-									<button type='button' class='close' data-dismiss='alert' aria-label='Close' > \
-										<i class='ion-ios-close-empty' ></i> \
-									</button> \
-									"+ data['error'] +"\
-								</div>\
-							</div>"
-							);
+	// 						$('#contact-form-result').html(
+	// 						"<div class='form-group' >\
+	// 							<div class='alert alert-danger alert-dismissible' role='alert'> \
+	// 								<button type='button' class='close' data-dismiss='alert' aria-label='Close' > \
+	// 									<i class='ion-ios-close-empty' ></i> \
+	// 								</button> \
+	// 								"+ data['error'] +"\
+	// 							</div>\
+	// 						</div>"
+	// 						);
 							
-						}
+	// 					}
 						
 						
-					}else{
-						$('#contact-form-result').html(alerts.error);
-					}
+	// 				}else{
+	// 					$('#contact-form-result').html(alerts.error);
+	// 				}
 					
-				},
-				error: function(){
-					$('#contact-form-result').html(alerts.error);
-				}
-			});
-		}
-	});
+	// 			},
+	// 			error: function(){
+	// 				$('#contact-form-result').html(alerts.error);
+	// 			}
+	// 		});
+	// 	}
+	// });
 	
 	
 	
